@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="InteractiveMap.Console/InteractiveMap.Console.csproj" Id="984c6f36-3251-447d-8775-46d29ced25bd" />
   <Project Path="Lab1/Lab1.csproj" Id="1a1b4dc3-38b8-4491-b870-73b9807d4ba1" />
 </Solution>
