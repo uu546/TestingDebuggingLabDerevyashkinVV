@@ -1,4 +1,6 @@
 <Solution>
   <Project Path="InteractiveMap.Console/InteractiveMap.Console.csproj" Id="984c6f36-3251-447d-8775-46d29ced25bd" />
   <Project Path="Lab1/Lab1.csproj" Id="1a1b4dc3-38b8-4491-b870-73b9807d4ba1" />
+  <Project Path="Lab2/Lab2.csproj" Id="df7512d1-af48-4ca1-b359-0df77476af90" />
+  <Project Path="TestingDebugging.Tests/TestingDebugging.Tests.csproj" Id="5277bf52-5f3e-4ecd-acb3-b1f7213bfe93" />
 </Solution>
