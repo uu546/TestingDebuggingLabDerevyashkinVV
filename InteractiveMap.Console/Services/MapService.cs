@@ -35,8 +35,12 @@ public sealed class MapService
     {
         if (string.IsNullOrWhiteSpace(name)) return null;
 
-        return _pois.FirstOrDefault(p =>
-            p.Name.Equals(name.Trim(), StringComparison.OrdinalIgnoreCase));
+        PointOfInterest? result = _pois.FirstOrDefault(p =>
+            p.Name.Equals(name.Trim(), StringComparison.OrdinalIgnoreCase)); 
+
+        System.Console.WriteLine($"Результат поиска: {result}");
+
+        return result;
     }
 
     public double GetDistance(int id1, int id2)

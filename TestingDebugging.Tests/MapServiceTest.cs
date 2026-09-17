@@ -24,7 +24,45 @@ namespace TestingDebugging.Tests
 
             Action act = () => map.AddPoi("", new Coordinate(32.1231, -178.0332));
 
-            Assert.Throws<ArgumentException>(() => act());   
+            Assert.Throws<ArgumentException>(() => act());
+        }
+
+        [Fact]
+        public void AddPoi_InvalidLongitude_ThrowsArgumentOutOfRangeException()
+        {
+            var map = new MapService();
+
+            Action act = () => map.AddPoi("A", new Coordinate(0, 181));
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => act());
+        }
+
+
+        [Fact]
+        public void AddPoi_ValidData_HasCoordinated()
+        {
+            var map = new MapService();
+
+            var poi = map.AddPoi("Парк", new Coordinate(32.1231, -178.0332));
+
+            Assert.Equal(32.1231, poi.Coordinate?.Latitude);
+            Assert.Equal(-178.0332, poi.Coordinate?.Longitude);
+        }
+
+        [Fact]
+        public void AddPoi_ValidData_RemovesAndGetAll()
+        {
+            var map = new MapService();
+
+            var a = map.AddPoi("A", new Coordinate(0, 0));
+            var b = map.AddPoi("B", new Coordinate(1, 1));
+
+            Assert.Equal(2, map.All.Count);
+
+            map.RemovePoi(a.Id);
+
+            Assert.Equal(1, map.All.Count);
+            Assert.Equal(map.All[0].Id, b.Id);
         }
 
         [Fact]
@@ -54,7 +92,7 @@ namespace TestingDebugging.Tests
         {
             var map = new MapService();
 
-            var result = map.RemovePoi(-1);
+            var result = map.RemovePoi(999);
 
             Assert.False(result);
         }
