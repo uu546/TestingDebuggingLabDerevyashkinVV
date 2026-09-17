@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net10.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+
+		<!--Лимит кучи 1024мб(1гб)-->
+		<RuntimeHostConfigurationOption
+			Include="System.GC.HeapHardLimit"
+			Value="1073741824" />
+
+		<ProjectReference Include="..\InteractiveMap.Console\InteractiveMap.Console.csproj" />
+	</ItemGroup>
+
+</Project>
