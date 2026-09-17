@@ -5,9 +5,11 @@ namespace InteractiveMap.Console.Services;
 public sealed class MapService
 {
     private readonly List<PointOfInterest> _pois = new();
+    //private readonly ConcurrentBag<PointOfInterest> _pois = new();
     private int _nextId = 1;
 
     public IReadOnlyList<PointOfInterest> All => _pois;
+    //public IReadOnlyCollection<PointOfInterest> All => _pois;
 
     public PointOfInterest AddPoi(string name, Coordinate coordinate)
     {
@@ -30,13 +32,14 @@ public sealed class MapService
     }
 
     public bool RemovePoi(int id) => _pois.RemoveAll(p => p.Id == id) > 0;
+    //public bool RemovePoi(int id) => _pois.Where(p => p.Id != id).Count() > 0;
 
     public PointOfInterest? FindByName(string name)
     {
         if (string.IsNullOrWhiteSpace(name)) return null;
 
         PointOfInterest? result = _pois.FirstOrDefault(p =>
-            p.Name.Equals(name.Trim(), StringComparison.OrdinalIgnoreCase)); 
+            p.Name.Equals(name.Trim(), StringComparison.OrdinalIgnoreCase));
 
         System.Console.WriteLine($"Результат поиска: {result}");
 
